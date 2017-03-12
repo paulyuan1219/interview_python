@@ -164,3 +164,45 @@ However, we can tell the sorted() function which attribute to sort on by specify
   >>> sorted(people, key = byName_key)
   [<name: Adam, age: 43>, <name: Becky, age: 11>, <name: Jack, age: 19>]
 ```
+
+
+copy	模块包含了一个名叫	copy	的函数,可以
+复制任意对象:
+```python
+>>>	p1	=	Point()
+>>>	p1.x	=	3.0
+>>>	p1.y	=	4.0
+>>>	import	copy
+>>>	p2	=	copy.copy(p1)
+```
+p1和	p2包含的数据是相同的,但并不是同一个点对象。
+```python
+>>>	print_point(p1)
+(3,	4)
+>>>	print_point(p2)
+(3,	4)
+>>>	p1	is	p2
+False
+>>>	p1	==	p2
+False
+```
+如果你用	copy.copy	复制了一个矩形,你会发现该函数复制了矩形对象,但没有复制内嵌的
+点对象。
+```python
+>>>	box2	=	copy.copy(box)
+>>>	box2	is	box
+False
+>>>	box2.corner	is	box.corner
+True
+```
+所幸的是	copy	模块还提供了一个名为	deepcopy	(深复制)的方法,这样就能把内嵌的对象
+也复制了。你肯定不会奇怪了,这种运算就叫深复制了。
+```python
+>>>	box3	=	copy.deepcopy(box)
+>>>	box3	is	box
+False
+>>>	box3.corner	is	box.corner
+False
+
+```
+
