@@ -247,7 +247,6 @@ def	increment(self,	seconds):
 ```python
 s= [('a', 3), ('b', 2), ('c', 1)]
 sorted(s, key=lambda x:x[1])
-```
 [很短的小文，很清楚](http://book.pythontips.com/en/latest/map_filter.html)
 
 
@@ -262,3 +261,4 @@ product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
 
 # Output: 24
 ```
+
