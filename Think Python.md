@@ -261,4 +261,4 @@ product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
 
 # Output: 24
 ```
-
+[很不错的coolshell](http://coolshell.cn/articles/10822.html)
