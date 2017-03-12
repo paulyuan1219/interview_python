@@ -206,3 +206,59 @@ False
 
 ```
 
+#### 类和对象
+```python
+#	inside	class	Time:
+def __init__(self,	hour=0,	minute=0,	second=0):
+    self.hour	=	hour
+    self.minute	=	minute
+    self.second	=	second
+#	inside	class	Time:
+def __str__(self):
+    return	'%.2d:%.2d:%.2d'	%	(self.hour,	self.minute,	self.second)
+
+#	inside	class	Time:
+def	__add__(self,	other):
+    seconds	=	self.time_to_int()	+	other.time_to_int()
+    return	int_to_time(seconds)
+    
+>>>	start	=	Time(9,	45)
+>>>	duration	=	Time(1,	35)
+>>>	print(start	+	duration)
+11:20:00
+
+#	inside	class	Time:
+def	__add__(self,	other):
+    if	isinstance(other,	Time):
+        return	self.add_time(other)
+    else:
+        return	self.increment(other)
+def	add_time(self,	other):
+    seconds	=	self.time_to_int()	+	other.time_to_int()
+    return	int_to_time(seconds)
+def	increment(self,	seconds):
+    seconds	+=	self.time_to_int()
+    return	int_to_time(seconds)
+```
+
+```python
+#### Map Reduce and Filter
+说说例子吧，我一般会在sorted, max, 这类函数里的key用lambda.比如有一个比较复杂的数组结构
+```python
+s= [('a', 3), ('b', 2), ('c', 1)]
+sorted(s, key=lambda x:x[1])
+```
+[很短的小文，很清楚](http://book.pythontips.com/en/latest/map_filter.html)
+
+
+number_list = range(-5, 5)
+less_than_zero = list(filter(lambda x: x < 0, number_list))
+print(less_than_zero)
+
+# Output: [-5, -4, -3, -2, -1]
+
+from functools import reduce
+product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
+
+# Output: 24
+```
