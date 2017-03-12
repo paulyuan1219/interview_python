@@ -1,3 +1,4 @@
+#### 全局变量
 在上面的例子中,known	这个字典是在函数外创建的,所以它属于主函数内,这是一个特殊
 的层。在主函数中的变量也叫全局变量,因为所有函数都可以访问这些变量。局部变量在所
 属的函数结束后就消失了,而主函数在其他函数调用结束后依然还存在。
@@ -28,3 +29,36 @@ been_called	=	False
 ```
 global	那句代码的效果是告诉解释器:『在这个函数内,been_called	使之全局变量;不要创
 建一个同名的局部变量。』
+
+
+下面的例子中,试图对全局变量进行更新:
+```python
+count	=	0
+def	example3():
+				count	=	count	+	1										#	WRONG
+```		
+运行的话,你会得到如下提示:
+UnboundLocalError:	local	variable	'count'	referenced	before	assignment
+(译者注:错误提示的意思是未绑定局部错误:局部变量	count	未经赋值就被引用。)
+Python	会假设这个	count	是局部的,然后基于这样的假设,你就是在写出该变量之前就试图
+读取。这样问题的解决方法依然就是声称count	为全局变量。
+```python
+def	example3():
+				global	count
+				count	+=	1
+```
+如果全局变量指向的是一个可修改的值,你可以无需声明该变量就直接修改:
+```python
+known	=	{0:0,	1:1}
+def	example4():
+				known[2]	=	1
+
+```
+所以你可以在全局的列表或者字典里面添加、删除或者替换元素,但如果你要重新给这个全
+局变量赋值,就必须要声明了:
+```python
+def	example5():
+				global	known
+				known	=	dict()
+```
+全局变量很有用,但不能滥用,要是总修改全局变量的值,就让程序很难调试了。
