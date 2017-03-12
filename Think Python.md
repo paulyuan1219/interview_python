@@ -154,3 +154,13 @@ enumerate	函数的返回值是一个枚举对象,它会遍历整个成对序列
 
 
 
+
+However, we can tell the sorted() function which attribute to sort on by specifying a key to be used. Let’s define one:
+```python
+  >>> def byName_key(person):
+  ...     return person.name
+  ... 
+
+  >>> sorted(people, key = byName_key)
+  [<name: Adam, age: 43>, <name: Becky, age: 11>, <name: Jack, age: 19>]
+```
